@@ -37,3 +37,23 @@ git push origin <branch_name>
 git push --set-upstream origin <branch_name>
 ```
 
+### 2. If the files are larger than 100MB Git rejects the pushing, so install lfs
+
+```bash
+git lfs install
+```
+```bash
+git lfs track "*.zip"
+git lfs track "*.mp4"
+git lfs track "*.exe"
+git lfs track "*.pdf"
+```
+```bash
+git add .gitattributes
+```
+```bash
+git commit -m "Track Large Files"
+```
+```bash
+git push
+```
