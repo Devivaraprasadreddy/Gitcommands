@@ -57,3 +57,40 @@ git commit -m "Track Large Files"
 ```bash
 git push
 ```
+
+### Connect the local system to GitHub 
+Step 1: Create the key
+```bash
+ssh-keygen -t RSA -b 4096 -C "devivaraprasad55@gmail.com"
+```
+Step 2: Check the agent connection
+```bash
+eval "$(ssh-agent -s)"
+```
+### It shows the ouput like this
+```bash
+Agent pid 2133
+```
+Step 3 : Add the private key
+```bash
+ssh-add ~/.ssh/id_ed25519
+```
+Step 4 : Copy the Public Key
+```bash
+cat ~/.ssh/id_ed25519.pub
+```
+Step 5 : Copy that public key and paste it into GitHub Settings --> SSH and GPG keys --> Click on New SSH key and paste the key
+Step 6 : Check the Connection
+```bash
+ssh -T git@github.com
+```
+### It shows the Output Like this
+```
+Hi Devivaraprasadreddy! You've successfully authenticated, but GitHub does not provide shell access.
+```
+### Once Connection was Successfull Pelase follow the below commands
+```bash
+git remote add origin git@github.com:USERNAME/REPO.git
+git branch -M main
+git push -u origin main
+```
