@@ -94,3 +94,40 @@ git remote add origin git@github.com:USERNAME/REPO.git
 git branch -M main
 git push -u origin main
 ```
+### For Connection from local CMD/Powershell/VSCode to GitHub
+Step -1 : Go to the below path
+```bash
+C:\Users\<Username>\.ssh
+```
+For example : C:\Users\DeviVaraPrasadReddyK\.ssh
+
+Step -2 : Start ssh-agent properly
+```bash
+Get-Service ssh-agent | Set-Service -StartupType Automatic
+Start-Service ssh-agent
+```
+Now check
+```bash
+Get-Service ssh-agent
+```
+This shows
+```bash
+Status: Running
+```
+Step -3 : Create the key
+```bash
+ssh-keygen -t rsa -b 4096 -C "devivaraprasad55@gmail.com"
+```
+Step -4 : Add it
+```bash
+ssh-add C:\Users\DeviVaraPrasadReddyK\.ssh\<privatekey>
+```
+
+Step -5 : Check the connection
+```bash
+ssh -T git@github.com
+```
+Output shows
+```
+Hi Devivaraprasadreddy! You've successfully authenticated, but GitHub does not provide shell access.
+```
